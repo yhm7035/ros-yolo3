@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ros-yolo3
+  labels:
+    app: ros-yolo3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ros-yolo3
+  template:
+    metadata:
+      labels:
+        app: ros-yolo3
+    spec:
+      containers:
+      - image: yhm7035/ros-yolo3
+        imagePullPolicy: Always
+        name: ros-yolo3
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+
