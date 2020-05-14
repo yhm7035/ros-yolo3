@@ -9,13 +9,7 @@ RUN apt-add-repository -y ppa:deadsnakes/ppa \
   && apt-get update \
   && apt-get install -y python3.6 python3-pip python-pip chrony ntpdate git \
   && ntpdate -q ntp.ubuntu.com
-
-RUN git clone https://github.com/yehengchen/YOLOv3-ROS.git \
-  && cd YOLOv3-ROS \
-  && cp -r yolov3_pytorch_ros/ /root \
-  && cd yolov3_pytorch_ros \
-  && pip install --upgrade pip \
-  && pip install -r requirements.txt
+RUN pip install --upgrade pip
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
